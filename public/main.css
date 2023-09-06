@@ -9,7 +9,7 @@ body {
 
 nav {
     width: 100%;
-    background-color: #4d5791;
+    background-color: #4d9191;
     height: 44px;
     padding: 0 40px;
 }
@@ -37,7 +37,7 @@ nav ul li a:hover  {
     color: #4d5791;
 }
 
-div.hero {
+header {
     height: 350px;
     background-color: #b4c6f0;
     background-image: url('bg.png');
@@ -47,25 +47,26 @@ div.hero {
     padding-top: 40px;
 }
 
-div.hero h1,
-div.hero h2 {
+header h1,
+header h2 {
     text-align: center;
     margin: 0;
 }
 
-div.hero h1 {
+header h1 {
     color: #fff;
     font-size: 4.2em;
     margin-bottom: 20px;
 }
 
-div.hero h2 {
-    color: #4d5791;
+header h2 {
+    color: #4d9181;
 }
 
 main {
     padding: 40px;
     width: 100%;
+    text-align: center;
 }
 
 .page-area {
@@ -75,7 +76,7 @@ main {
 
 footer {
     height: 50px;
-    background-color: #b4c6f0;
+    background-color: #b4f0c8;
     padding: 40px;
 }
 
@@ -90,9 +91,7 @@ footer {
     margin-top: 0;
 }
 
-.center {
-    text-align: center;
-}
+
 
 main article {
     display: inline-block;

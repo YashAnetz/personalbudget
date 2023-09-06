@@ -3,9 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="Author" content="Yash Ahire"> <!-- SEO Change: Added metadata author name -->
+
     <title>Personal Budget</title>
     <meta name="description" content="A free personal budger app">
     <meta name="keywords" content="app free budget finance">
+    <meta name="keywords" content="app, free, budget, finance"> <!-- SEO Change: Added commas to keywords -->
     <link rel="stylesheet" href="reset.css">
     <link rel="stylesheet" href="main.css">
 </head>
@@ -13,26 +16,27 @@
 
 <a href="#main" class="skip">Skip to content</a>
 
-    <nav>
+    <nav role="navHeader">  <!-- A11Y Change: Added roles for accesibility -->
         <ul>
             <li><a href="/">Home</a></li>
             <li><a href="/about.html">About</a></li>
             <li><a href="/login.html">Login</a></li>
-            <li><a href="https://google.com">Google</a></li>
-        </ul>
+            <li><a href="https://google.com" rel="noopener noreferrer">Google</a></li> <!-- SEO Change: Added rel attribute -->
+            <li><a href="#" class="dark">Dark Mode</a></li>  <!-- A11Y Change: Added dark mode for better accessibility -->
+        </ul>        
     </nav>
 
-    <div class="hero">
+    <header id="header" role="subHeader">
         <h1>Personal Budget</h1>
         <h2>A personal-budget management app</h2>
-    </div>
+    </header>
 
-    <main class="center" id="main">
+    <main id = "main"  >  <!-- Semantic HTML Change: Removed class and added ID -->
 
-        <div class="page-area">
+        <section class="page-area">  <!-- Semantic HTML Change: Replaced div with section -->
 
             <article>
-                <h1>Stay on track</h1>
+                <h2>Stay on track</h2>  <!-- Semantic HTML Change: Changed h1 to h2 for hierarchy -->
                 <p>
                     Do you know where you are spending your money? If you really stop to track it down,
                     you would get surprised! Proper budget management depends on real data... and this
@@ -41,14 +45,14 @@
             </article>
     
             <article>
-                <h1>Alerts</h1>
+                <h2>Alerts</h2>
                 <p>
                     What if your clothing budget ended? You will get an alert. The goal is to never go over the budget.
                 </p>
             </article>
     
             <article>
-                <h1>Results</h1>
+                <h2>Results</h2>
                 <p>
                     People who stick to a financial plan, budgeting every expense, get out of debt faster!
                     Also, they to live happier lives... since they expend without guilt or fear... 
@@ -57,14 +61,14 @@
             </article>
     
             <article>
-                <h1>Free</h1>
+                <h2>Free</h2>
                 <p>
                     This app is free!!! And you are the only one holding your data!
                 </p>
             </article>
     
             <article>
-                <h1>Stay on track</h1>
+                <h2>Stay on track</h2>
                 <p>
                     Do you know where you are spending your money? If you really stop to track it down,
                     you would get surprised! Proper budget management depends on real data... and this
@@ -73,35 +77,37 @@
             </article>
     
             <article>
-                <h1>Alerts</h1>
+                <h2>Alerts</h2>
                 <p>
                     What if your clothing budget ended? You will get an alert. The goal is to never go over the budget.
                 </p>
             </article>
     
             <article>
-                <h1>Results</h1>
+                <h2>Results</h2>
                 <p>
                     People who stick to a financial plan, budgeting every expense, get out of debt faster!
                     Also, they to live happier lives... since they expend without guilt or fear... 
                     because they know it is all good and accounted for.
                 </p>
             </article>
-    
+
             <article>
                 <h1>Chart</h1>
                 <p>
                     <canvas id="myChart" width="400" height="400"></canvas>
                 </p>
             </article>
+    
+            
 
-        </div>
+        </section>
 
     </main>
 
     <footer class="bottom">
         <div class="center">
-            All rights reserved &copy; Fabio Nolasco
+            All rights reserved &copy; 2023
         </div>
     </footer>
 
@@ -109,7 +115,20 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js" integrity="sha512-s+xg36jbIujB2S2VKfpGmlC3T5V2TF3lY48DX7u2r9XzGzgPsa6wTpOQA7J9iffvdeBN0q9tKzRxVxw1JviZPg==" crossorigin="anonymous"></script>
 
     <script>
-        var dataSource = {
+        let darkmode = document.querySelector('.dark')
+        let mainPage = document.querySelector('#main')
+        let header = document.querySelector('#header')
+
+        darkmode.addEventListener('click',function(){
+
+            mainPage.style.backgroundColor = 'Gray'
+            header.style.backgroundColor = 'Gray'
+            mainPage.style.color = 'White'
+        })
+
+
+
+      var dataSource = {
                 datasets: [
                     {
                         data: [],
