@@ -37,6 +37,14 @@ nav ul li a:hover  {
     color: #4d5791;
 }
 
+button 
+{
+    background: none;
+    width: 140px;
+    height: 45px;
+    border: none;
+}
+
 header {
     height: 350px;
     background-color: #b4c6f0;
