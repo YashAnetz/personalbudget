@@ -109,6 +109,13 @@ main article {
     margin: 20px;
 }
 
+.dark
+{
+    width: 150px;
+    font-size: 1.4em;
+    font-weight: 100;
+}
+
 @media screen and (min-width: 768px) {
     main article {
         margin: 10px;

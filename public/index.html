@@ -99,6 +99,16 @@
                     <canvas id="myChart" width="400" height="400"></canvas>
                 </p>
             </article>
+
+            <article>
+                <h1>D3 js Chart</h1>
+                <p>
+                    <svg id="d3js" width="400" height="400"></svg>
+                </p>
+            </article>
+
+
+
     
             
 
@@ -129,19 +139,68 @@
       integrity="sha512-s+xg36jbIujB2S2VKfpGmlC3T5V2TF3lY48DX7u2r9XzGzgPsa6wTpOQA7J9iffvdeBN0q9tKzRxVxw1JviZPg=="
       crossorigin="anonymous"
     ></script>
-
+    <script src="https://d3js.org/d3.v7.min.js"></script>
     <script>
         let darkmode = document.querySelector('.dark')
         let mainPage = document.querySelector('#main')
         let header = document.querySelector('#header')
+        let isDarkMode = false
+
+
+        const svg = d3.select('#d3js');
+
+// Define your data (replace this with your actual data)
+
+let colors = ['#ffcd56', '#ff6384', '#36a2eb', '#fd6b19', '#FF5733', '#B5FF33', '#33DAFF'];
+
+axios.get('budget').then((response) => {
+    const budgetData = response.data.myBudget;
+    console.log(budgetData)
+
+    // Define pie layout
+    const pie = d3.pie().value(d => d.budget);
+    const pieData = pie(budgetData);
+
+    // Define an arc generator to create the SVG paths for the pie slices
+    const arc = d3.arc()
+        .innerRadius(0)
+        .outerRadius(100);  // adjust radius to your liking
+
+    // Create pie chart
+    svg.selectAll('path')
+        .data(pieData)
+        .enter()
+        .append('path')
+        .attr('d', arc) // use the arc generator to draw slices
+        .attr('fill', (d, i) => colors[i % colors.length])
+        .attr('transform', 'translate(150, 150)'); // center the pie chart
+});
+
+
+   
 
         darkmode.addEventListener('click',function(){
 
-            mainPage.style.backgroundColor = 'Black'
-            header.style.backgroundColor = 'Black'
-            mainPage.style.color = 'White'
-            header.style.backgroundImage = 'none'
+            isDarkMode = !isDarkMode; // Toggle dark mode state
+
+            if (isDarkMode) {
+                // Dark mode styles
+                mainPage.style.backgroundColor = 'Black'
+                header.style.backgroundColor = 'Black'
+                mainPage.style.color = 'White'
+                header.style.backgroundImage = 'none'
+            } else {
+                // Light mode styles (you can adjust these as needed)
+                mainPage.style.backgroundColor = 'White'
+                header.style.backgroundColor = '#b4c6f0'
+                mainPage.style.color = 'Black'
+                header.style.backgroundImage = 'url("bg.png")';
+            }
         })
+
+        
+
+        
 
 
 
@@ -183,8 +242,15 @@
         }
 
         getBudget();
+
+
+
+        
     </script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.5.0/axios.min.js" integrity="sha512-aoTNnqZcT8B4AmeCFmiSnDlc4Nj/KPaZyB5G7JnOnUEkdNpCZs1LCankiYi01sLTyWy+m2P+W4XM+BuQ3Q4/Dg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.0/chart.min.js" integrity="sha512-7U4rRB8aGAHGVad3u2jiC7GA5/1YhQcQjxKeaVms/bT66i3LVBMRcBI9KwABNWnxOSwulkuSXxZLGuyfvo7V1A==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+
 </body>
+
 </html>
